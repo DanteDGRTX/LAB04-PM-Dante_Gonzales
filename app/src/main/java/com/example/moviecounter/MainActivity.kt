@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -40,6 +41,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
     var name by remember { mutableStateOf("") }
+    var greeting by remember { mutableStateOf("") }
 
     Column(modifier = modifier) {
         Text(
@@ -52,6 +54,10 @@ fun Greeting(modifier: Modifier = Modifier) {
             onValueChange = { name = it },
             label = { Text("Ingresa tu nombre") }
         )
+        Button(onClick = { greeting = "Hola, $name" }) {
+            Text("Show Greeting")
+        }
+        Text(text = greeting)
     }
 }
 
